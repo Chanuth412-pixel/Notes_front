@@ -1,38 +1,241 @@
+/* Custom CSS for Notes App */
+
+/* Global Styles */
+body {
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Navbar Enhancements */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.nav-link.btn {
+  border: none;
+  margin: 0 0.25rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+}
+
+.nav-link.btn:hover {
+  background-color: rgba(255,255,255,0.2) !important;
+  transform: translateY(-1px);
+}
+
+.nav-link.btn.active {
+  background-color: rgba(255,255,255,0.3) !important;
+  font-weight: 600;
+}
+
+/* Card Enhancements */
+.card {
+  border: none;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+}
+
+.card-header {
+  border-radius: 0.75rem 0.75rem 0 0 !important;
+  border-bottom: none;
+  font-weight: 600;
+}
+
+/* Button Enhancements */
+.btn {
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Form Enhancements */
+.form-control, .form-select {
+  border-radius: 0.5rem;
+  border: 2px solid #e9ecef;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  transform: translateY(-1px);
+}
+
+.form-label {
+  color: #495057;
+  margin-bottom: 0.75rem;
+}
+
+/* Badge Enhancements */
+.badge {
+  font-weight: 500;
+  padding: 0.5em 0.75em;
+  border-radius: 0.5rem;
+}
+
+/* Stats Cards */
+.dashboard .card.bg-primary,
+.dashboard .card.bg-success,
+.dashboard .card.bg-info {
+  border-radius: 1rem;
+  background: linear-gradient(135deg, var(--bs-primary), #4a90e2) !important;
+}
+
+.dashboard .card.bg-success {
+  background: linear-gradient(135deg, var(--bs-success), #2ecc71) !important;
+}
+
+.dashboard .card.bg-info {
+  background: linear-gradient(135deg, var(--bs-info), #3498db) !important;
+}
+
+/* Loading Animations */
+.spinner-border {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Fade In Animation */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* List Group Enhancements */
+.list-group-item {
+  border: none;
+  border-bottom: 1px solid #e9ecef;
+  transition: all 0.2s ease;
+}
+
+.list-group-item:hover {
+  background-color: #f8f9fa;
+  transform: translateX(5px);
+}
+
+.list-group-item:last-child {
+  border-bottom: none;
+}
+
+/* Alert Enhancements */
+.alert {
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+  .container-fluid {
+    padding: 1rem;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .card-body {
+    padding: 1rem;
   }
+  
+  .navbar-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+  
+  .nav-link.btn {
+    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+  }
+}
+
+/* Tag Management Specific */
+.tag-management .card.border-primary {
+  border-color: rgba(13, 110, 253, 0.5) !important;
+  background: linear-gradient(135deg, #ffffff, #f8f9ff);
+}
+
+.tag-management .card.border-secondary {
+  border-color: rgba(108, 117, 125, 0.5) !important;
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+}
+
+/* Advanced Search Results */
+.advanced-search .list-group-item {
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+/* Dashboard Notes Grid */
+.dashboard .card-body.border-end.border-bottom {
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+}
+
+/* Icon Enhancements */
+.fas, .far {
+  transition: all 0.2s ease;
+}
+
+.btn:hover .fas,
+.btn:hover .far {
+  transform: scale(1.1);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus Enhancements */
+.btn:focus,
+.form-control:focus,
+.form-select:focus {
+  outline: none;
+}
+
+/* Utility Classes */
+.shadow-soft {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08) !important;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #0d6efd, #6610f2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

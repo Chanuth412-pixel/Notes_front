@@ -99,6 +99,22 @@ const Dashboard: React.FC = () => {
     }
   };
 
+  const deleteSelectedNote = async () => {
+    if (!selectedNote || !selectedNote.id) return;
+    const confirmDelete = window.confirm('Are you sure you want to delete this note? This action cannot be undone.');
+    if (!confirmDelete) return;
+    try {
+      await NoteService.deleteNote(selectedNote.id as number);
+      // remove from local list
+      setRecentNotes(prev => prev.filter(n => n.id !== selectedNote.id));
+      closeNoteModal();
+      alert('Note deleted');
+    } catch (err) {
+      console.error('Failed to delete note', err);
+      alert('Failed to delete note');
+    }
+  };
+
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -356,6 +372,7 @@ const Dashboard: React.FC = () => {
                 </div>
               </div>
               <div className="modal-footer">
+                <button type="button" className="btn btn-danger me-auto" onClick={deleteSelectedNote} disabled={!selectedNote?.id}>Delete</button>
                 <button type="button" className="btn btn-secondary" onClick={closeNoteModal}>Close</button>
                 <button type="button" className="btn btn-primary" onClick={saveNoteEdits}>Save changes</button>
               </div>
